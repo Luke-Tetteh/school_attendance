@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Attendance
+{% endblock title %}
+
+{% block body %}
+<h1 class="courses-heading">Courses</h1>  <div>
+
+
+{% for course in courses %}
+    <h3>{{ course.name }}</h3>
+    <p>{{ course.description }}</p>
+    <form action="{{ url_for('enroll_student') }}" method="post">
+      <input type="hidden" name="course_id" value="{{ course.id }}">
+      <button type="submit" onclick="enrollCourse(event)">Enroll</button>
+    </form>
+  </div>
+
+  <div class="form-group">
+  <label for="student_id">Student ID:</label>
+  <select class="form-control" id="student_id" name="student_id">
+    {% for student in students %}
+      <option value="{{ student.id }}">{{ student.name }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<!-- Add the course_id select element -->
+<div class="form-group">
+  <label for="course_id">Course ID:</label>
+  <select class="form-control" id="course_id" name="course_id">
+    {% for course in courses %}
+      <option value="{{ course.id }}">{{ course.name }}</option>
+    {% endfor %}
+  </select>
+</div>
+{% endfor %}
+
+<script>
+  function enrollCourse(event) {
+    event.preventDefault();
+    
+    // Get the course ID from the form
+    var courseId = event.target.elements.course_id.value;
+    
+    // Perform any necessary validation or data manipulation
+    // For example, you can check if the courseId is valid
+    
+    if (!courseId) {
+      // Display an error message or perform other actions
+      console.log('Invalid course ID');
+      return;
+    }
+    
+    // Send an AJAX request to handle the enrollment
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/enroll', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    
+    // Define the data to be sent in the request body
+    var data = JSON.stringify({ course_id: courseId });
+    
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        // Handle the successful enrollment response
+        console.log('Enrollment successful');
+        // You can perform any additional actions here, such as displaying a success message or updating the UI
+        
+      } else {
+        // Handle any errors or failure cases
+        console.log('Enrollment failed');
+        // You can display an error message or perform other actions based on the response
+        
+      }
+    };
+    
+    xhr.onerror = function() {
+      // Handle any network or request errors
+      console.log('An error occurred');
+      // You can display an error message or perform other actions based on the error
+      
+    };
+    
+    // Send the request
+    xhr.send(data);
+  }
+</script>
+{% endblock body %}

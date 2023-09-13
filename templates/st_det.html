@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Student Detail
+{% endblock title %}
+
+{% block body %}
+  <h2>Student Details</h2>
+  
+  {% for student_detail in student_details %}
+    <h3>Student Information</h3>
+    <p>Student ID: {{ student_detail.student.id }}</p>
+    <p>Student Name: {{ student_detail.student.username }}</p>
+
+    <h3>All Attendance</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Attendance</th>
+                <th>Attendance Percentage</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for index in range(student_detail.attendances|length) %}
+            <tr>
+                <td>{{ student_detail.attendances[index].course.name }}</td>
+                <td>{{ student_detail.attendances[index].date }}</td>
+                <td>{{ student_detail.attendances[index].is_present }}</td>
+                <td>{{ student_detail.attendance_record[index].attendance_percentage }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  {% endfor %}
+
+  <script src="{{ url_for('static', filename='assets/vendor/hoverIntent/hoverIntent.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+{% endblock body %}

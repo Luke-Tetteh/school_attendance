@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Search Results</h1>
+
+    <h2>Courses</h2>
+    <form action="/search" method="get">
+        <input type="text" name="course_query" placeholder="Enter course name">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for course in course_results %}
+            <li>{{ course.name }}</li>
+        {% else %}
+            <li>No courses found.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Students</h2>
+    <ul>
+        {% for student in student_results %}
+            <li>{{ student.name }}</li>
+        {% else %}
+            <li>No students found.</li>
+        {% endfor %}
+    </ul>
+{% endblock body %}

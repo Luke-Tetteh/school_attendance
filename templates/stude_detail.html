@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Student Detail
+{% endblock title %}
+
+{% block body %}
+
+  <h1>Student Details</h1>
+  <table>
+    <tr>
+      <th>Student ID</th>
+      <th>Student Name</th>
+      <th>Attendance</th>
+    </tr>
+    {% for student_detail in student_details %}
+    <tr>
+      <td>{{ student_detail.student.id }}</td>
+      <td>{{ student_detail.student.username }}</td>
+      <td>
+  <ul>
+    {% for attendance in student_detail.attendances %}
+      <li>{{ attendance.course.name }} --- {{ attendance.date }} --- {{ attendance.is_present }}</li>
+    {% endfor %}
+  </ul>
+</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+
+  <script src="{{ url_for('static', filename='assets/vendor/hoverIntent/hoverIntent.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}">
+{% endblock body %}

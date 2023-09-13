@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block body %}
+ <form method="POST" action="{{ url_for('login') }}">
+    {{ form.csrf_token() }}
+    <div>
+        <label for="username">Username:</label>
+        {{ form.username() }}
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        {{ form.password() }}
+    </div>
+    <div>
+        <input type="submit" value="Login">
+    </div>
+</form>
+{% endblock body %}

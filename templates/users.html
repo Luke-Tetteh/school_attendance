@@ -1,0 +1,31 @@
+<!-- users.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <h1>User Registration</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.username.label }} {{ form.username }}
+        </div>
+        <div>
+            {{ form.password.label }} {{ form.password }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+</body>
+</html>

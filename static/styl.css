@@ -1,0 +1,50 @@
+/* style.css */
+
+/* Apply styles to the <h1> element */
+h1 {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  /* Apply styles to the <h2> elements */
+  h2 {
+    color: #777;
+    font-size: 18px;
+  }
+  
+  /* Apply styles to the form labels */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Apply styles to the form input elements */
+  input[type="text"],
+  input[type="password"],
+  select {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Apply styles to the form submit buttons */
+  input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Apply styles to the flashed messages */
+  ul.messages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul.messages li {
+    margin-bottom: 5px;
+    color: #ff0000;
+  }
+  

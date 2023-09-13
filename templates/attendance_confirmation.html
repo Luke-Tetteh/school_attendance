@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+Attendance Confirmation
+{% endblock title %}
+
+{% block body %}
+  <h1>Attendance Confirmation</h1>
+  <form method="POST" action="{{ url_for('attendance_confirmation') }}">
+    <input type="hidden" name="student_id" value="{{ student_id }}">
+    
+    <label for="is_present">Attendance Status:</label>
+    <select name="is_present" id="is_present">
+      <option value="Present">Present</option>
+      <option value="Absent">Absent</option>
+    </select>
+    
+    <input type="submit" value="Confirm Attendance" class="btn btn-primary">
+  </form>
+
+  <a href="{{ url_for('home') }}" class="btn btn-secondary">Go back to home</a>
+{% endblock body %}

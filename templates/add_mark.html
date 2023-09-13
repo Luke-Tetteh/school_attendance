@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Marks
+{% endblock title %}
+
+
+
+{% block body %}
+
+  <h2>Add Mark</h2>
+  <form method="POST" class="form-center">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      {{ form.student_id.label(class="form-label") }}
+      {{ form.student_id(class="form-control", placeholder="Choose student_id") }}
+    </div>
+    <div class="form-group">
+      {{ form.course_id.label(class="form-label") }}
+      {{ form.course_id(class="form-control",  placeholder="Choose course_id") }}
+    </div>
+    <div class="form-group">
+      {{ form.mark.label(class="form-label") }}
+      {{ form.mark(class="form-control", placeholder="Enter score") }}
+    </div>
+    <div class="form-group">
+      {{ form.score.label(class="form-label") }}
+      {{ form.score(class="form-control", placeholder="Enter score" )}}
+    </div>
+    <button type="submit" class="btn btn-primary">Add Mark</button>
+  </form>
+
+{% endblock body %}

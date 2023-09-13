@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}
+Triggers
+{% endblock title %}
+
+
+
+{% block body %}
+ <h3 class="text-center"><span>Student Triggers Records</span> </h3>
+  
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<form method="POST">
+  {{ form.hidden_tag() }}
+  
+  <!-- Render student details form fields -->
+  <div class="form-group">
+    {{ form.username.label(class="form-label") }}
+    {{ form.username(class="form-control") }}
+  </div>
+  
+  <!-- Add other student form fields as needed -->
+
+  <!-- Render attendance fields for each course -->
+  {% for course in courses %}
+    <div class="form-group">
+      {{ form["attendance_" ~ course.id].label(class="form-check-label") }}
+      {{ form["attendance_" ~ course.id](class="form-check-input") }}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock body %}

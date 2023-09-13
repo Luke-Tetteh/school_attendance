@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}
+Add Marks
+{% endblock title %}
+
+
+
+{% block body %}
+    <h1>Dashboard</h1>
+  <link href="static/assets/css/sty.css" rel="stylesheet">
+
+    <h2>Add Student</h2>
+    <form method="POST" action="/dashboard">
+        <input type="hidden" name="entity_type" value="student">
+        
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        
+        <input type="submit" value="Add Student">
+    </form>
+    
+    <h2>Add Course</h2>
+    <form method="POST" action="/dashboard">
+        <input type="hidden" name="entity_type" value="course">
+        
+        <label for="course_name">Course Name:</label>
+        <input type="text" name="course_name" id="course_name" required>
+        
+        <input type="submit" value="Add Course">
+    </form>
+    
+<h2>Add Attendance Mark</h2>
+<form method="POST" action="/dashboard">
+    <input type="hidden" name="entity_type" value="attendance">
+
+    <label for="student_id">Students:</label>
+    <select name="student_id" id="student_id" multiple>
+        {% for student in students %}
+        <option value="{{ student.id }}">{{ student.id}}</option>
+        {% endfor %}
+    </select>
+
+    <label for="is_present">Attendance Status:</label>
+        <select name="is_present" id="is_present">
+            <option value="True">Present</option>
+            <option value="False">Absent</option>
+        </select>
+
+    <label for="course_id">Course:</label>
+    <select name="course_id" id="course_id">
+        {% for course in courses %}
+        <option value="{{ course.id }}">{{ course.id }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="date">Date:</label>
+    <input type="date" name="attendance_date" id="attendance_date">
+
+    <h3>Attendance Percentage: {{ attendance_percentage }}%</h3>
+
+    
+    <input type="submit" value="Add Attendance Mark">
+</form>
+
+    
+    <h2>Messages:</h2>
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    
+    <a href="/home" class="home-button">Go to Home Page</a>
+    
+ {% endblock body %}
+

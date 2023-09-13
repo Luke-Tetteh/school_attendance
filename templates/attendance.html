@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Attendance
+{% endblock title %}
+
+{% block body %}
+  <h2>Attendance</h2>
+
+  <!-- attendance.html -->
+
+  <form method="GET" action="{{ url_for('attendance') }}">
+    <div class="form-group">
+      <label for="student_id">Student</label>
+      <select class="form-control" id="student_id" name="student_id">
+        {% for student in students %}
+        <option value="{{ student.id }}">{{ student.username }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Get Attendance</button>
+  </form>
+
+  <form method="POST" action="{{ url_for('attendance') }}">
+    {{ form.csrf_token }}
+
+    <!-- Add fields for student, course, attendance data -->
+
+    <!-- Student ID -->
+    
+    <div class="form-group">
+      <label for="student_id">Student ID:</label>
+      <select class="form-control" id="student_id" name="student_id">
+        {% for student in students %}
+        <option value="{{ student.id }}">{{ student.id }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Course ID -->
+    <div class="form-group">
+      <label for="course_id">Course ID:</label>
+      <select class="form-control" id="course_id" name="course_id">
+        {% for course in courses %}
+        <option value="{{ course.id }}">{{ course.id }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="is_present">Present:</label>
+      <select id="is_present" name="is_present">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" class="form-control" id="date" name="date">
+    </div>
+
+    <div class="form-group">
+      <label for="attendance_record">Attendance Record:</label>
+      <textarea class="form-control" id="attendance_record" name="attendance_record"></textarea>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <!-- Attendance message -->
+  {% if student_records %}
+  <h3>Attendance Records</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Attendance Record</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if selected_student %}
+        {% for student_record in student_records %}
+          {% if student_record.student.id == selected_student.id %}
+          <tr>
+            <td>{{ student_record.student.username }}</td>
+            <td>{{ student_record.attendance_record }}</td>
+          </tr>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  <!-- Attendance posted message -->
+  {% if attendance_posted %}
+  <div class="alert alert-success" role="alert">
+    Attendance has been successfully posted.
+  </div>
+  {% endif %}
+
+{% endblock body %}

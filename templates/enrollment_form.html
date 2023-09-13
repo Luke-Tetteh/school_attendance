@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enrollment Form</title>
+  <style>
+    /* Add your CSS styles here */
+   a, form {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    form input {
+      display: block;
+      margin-bottom: 10px;
+    }
+    
+   a, form button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Enrollment Form</h2>
+  <form action="/enroll_student" method="get">
+    <label for="student_id">Student ID:</label>
+    <input type="text" id="student_id" name="student_id" required>
+    
+    <label for="course_id">Course ID:</label>
+    <input type="text" id="course_id" name="course_id" required>
+    
+    <button type="submit">Enroll Student</button>
+  </form>
+     <a href="/home" class="home-button">Go to Home Page</a>
+
+</body>
+</html>

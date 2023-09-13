@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Marks</h1>
+  <form method="POST" action="/marks">
+  <div class="form-group">
+    <label for="student_id">Student ID:</label>
+    <input type="text" class="form-control" id="student_id" name="student_id">
+  </div>
+  <div class="form-group">
+    <label for="mark">Mark:</label>
+    <input type="text" class="form-control" id="mark" name="mark">
+  </div>
+  <div class="form-group">
+    <label for="score">Score:</label>
+    <input type="text" class="form-control" id="score" name="score">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>Student Records</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Name</th>
+        <th>Attendance Record</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student_record in student_records %}
+      <tr>
+        <td>{{ student_record.student.id }}</td>
+        <td>{{ student_record.student.username }}</td>
+        <td>{{ student_record.attendance_record }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock body %}

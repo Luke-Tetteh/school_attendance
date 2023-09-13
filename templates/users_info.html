@@ -1,0 +1,22 @@
+<!-- users_info.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Information</title>
+</head>
+<body>
+    <h1>User Information</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

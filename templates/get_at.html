@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Records</title>
+    <style>
+        .selected {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Attendance Records</h1>
+
+    <table>
+     <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Attendance Record</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student_record in student_records %}
+                <tr {% if student_record == selected %}class="selected"{% endif %}>
+                    <td>{{ student_record.student.username }}</td>
+                    <td>{{ student_record.attendance_record }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </body>

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+
+    
+
+<!-- Add the remaining sections (Students, Attendance, Courses, Marks, Student Courses) following a similar structure -->
+<section id="hero">
+        <div class="hero-content">
+            <h2>Welcome to Attendance Student Management System</h2>
+            <p>Efficiently track and manage student attendance with our advanced system</p>
+            <a href="/signup" class="cta-button">Sign up now</a>
+        </div>
+    </section>
+    
+    <section id="features">
+        <div class="features-content">
+            <h2>Features</h2>
+            <ul>
+                <li>Automated attendance marking</li>
+                <li>Comprehensive attendance reports</li>
+                <li>Leave management system</li>
+                <li>Integration with Student Information System</li>
+                <li>Mobile accessibility</li>
+                <li>Real-time notifications and reminders</li>
+            </ul>
+        </div>
+    </section>
+    
+
+
+<!-- Forms section -->
+<section id="forms">
+    <form action="/addstudent" method="POST">
+        <button type="submit">Create Student</button>
+    </form>
+    <form action="/attendance" method="POST">
+        <button type="submit">Mark Attendance</button>
+    </form>
+    <form action="/create_course" method="POST">
+        <button type="submit">Create Course</button>
+    </form>
+    <form action="/add_mark" method="POST">
+        <button type="submit">Add Mark</button>
+    </form>
+    <form action="/enroll_student" method="POST">
+        <button type="submit">Enroll Student</button>
+    </form>
+    <hr/>
+</section>
+
+<!-- Users section -->
+
+<!-- Add the remaining sections (Students, Attendance, Courses, Marks, Student Courses) following a similar structure -->
+
+
+
+
+
+  <section id="students">
+        <form action="/students" method="GET">
+            <button type="submit">Get All Students</button>
+        </form>
+        <h2>Students</h2>
+        <ul>
+            {% for student in students %}
+            <li>{{ student.username }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+  
+
+
+
+
+
+    <section id="login">
+        <div class="login-content">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <input type="text" name="username" placeholder="Username">
+                <input type="password" name="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </section>
+    
+  
+  <!-- Actions section -->
+<section id="actions">
+    <div class="actions-content">
+        <h2>Actions</h2>
+        <form action="/dashboard" method="POST">
+            <button type="submit">Go to Dashboard</button>
+        </form>
+        <!-- Add the remaining forms and buttons with appropriate action attributes -->
+    </div>
+</section>
+
+<!-- Users section -->
+<section id="users">
+    <div class="users-content">
+        <h2>Users</h2>
+        <ul>
+            {% for user in users %}
+            <li>{{ user.username }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+
+<section id="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or inquiries, please feel free to contact us using the information below:</p>
+            <ul>
+                <li>Email: info@attendancemanagement.com</li>
+                <li>Phone: +1234567890</li>
+                <li>Address: 123 Main Street, City, Country</li>
+            </ul>
+        </div>
+    </section>
+
+<section id="about">
+        <div class="about-content">
+            <h2>About</h2>
+            <p>The Attendance Student Management system is a powerful tool designed to streamline attendance tracking and management in educational institutions. It offers a user-friendly interface and advanced features to simplify attendance-related tasks.</p>
+        </div>
+    </section>
+
+{% endblock body %}
+
+
