@@ -14,4 +14,4 @@ This is a Student Attendance Management System built with Flask, SQLAlchemy, and
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/ruffinh22/student-attendance-management-system.git
+   git clone https://github.com/Luke-Tetteh/school_attendance.git
